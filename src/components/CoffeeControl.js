@@ -13,10 +13,10 @@ class CoffeeControl extends React.Component {
   }
   
   handleClick = () => {
-    if (this.state.selectedTea != null) {
+    if (this.state.selectedCoffee != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedTea: null,
+        selectedCoffee: null,
         editing: false
       });
     } else {
@@ -24,6 +24,12 @@ class CoffeeControl extends React.Component {
         formVisibleOnPage: !prevState.formVisibleOnPage,
       }));
     }
+  }
+
+  handleAddingNewCoffeeToList = (newCoffee) => {
+    const newMainCoffeeList = this.state.mainCoffeeList.concat(newCoffee);
+    this.setState({mainCoffeeList: newMainCoffeeList});
+    this.setState({formVisibleOnPage: false});
   }
 
   render(){
