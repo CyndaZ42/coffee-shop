@@ -9,10 +9,9 @@ function EditCoffeeForm (props) {
     event.preventDefault();
     props.onEditCoffee({
       name: event.target.name.value, 
-      origin: event.target.origin.value, price:
-      event.target.price.value, steep:
-      event.target.roast.value, 
-      inventory: coffee.inventory, 
+      origin: event.target.origin.value, 
+      price: event.target.price.value,
+      roast: event.target.roast.value, 
       id: coffee.id
     });
   }
