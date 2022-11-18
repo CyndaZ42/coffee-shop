@@ -23,4 +23,4 @@ Coffee.propTypes = {
   whenCoffeeClicked: PropTypes.func
 }
 
-export default CoffeeList;
+export default Coffee;
