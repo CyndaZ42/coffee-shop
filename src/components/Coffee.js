@@ -1,32 +1,26 @@
 import React from "react";
-import Coffee from "./Coffee";
 import PropTypes from "prop-types";
 
-function CoffeeList(props){
-
-
+function Coffee(props){
   return (
     <React.Fragment>
-      <hr/>
-      {props.coffeeList.map((coffee) =>
-        <Coffee 
-          whenCoffeeClicked={props.onCoffeeSelection}
-          name={coffee.name}
-          origin={coffee.origin}
-          inventory={coffee.inventory}
-          price={coffee.price}
-          roast={coffee.roast}
-          id={coffee.id}
-          key={coffee.id}
-        />
-      )}
+      <div onClick = {() => props.whenCoffeeClicked(props.id)}>
+        <p>{props.name} Coffee - From {props.origin}</p>
+        <p>{props.price}</p>
+        <p>{props.inventory} remaining</p>
+      </div>
     </React.Fragment>
   );
 }
 
-CoffeeList.propTypes = {
-  coffeeList: PropTypes.array,
-  onCoffeeSelection: PropTypes.func
-};
+Coffee.propTypes = {
+  names: PropTypes.string,
+  origin: PropTypes.string,
+  price: PropTypes.string,
+  id: PropTypes.string,
+  roast: PropTypes.string,
+  inventory: PropTypes.number,
+  whenCoffeeClicked: PropTypes.func
+}
 
 export default CoffeeList;
