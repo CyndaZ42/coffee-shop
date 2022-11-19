@@ -65,6 +65,38 @@ class CoffeeControl extends React.Component {
     });
   }
 
+  handleRestockClick = () => {
+    if(this.state.selectedCoffee.inventory < 500) {
+      const CoffeeToRestock = this.state.selectedCoffee;
+      const changedCoffee = {
+        name: CoffeeToRestock.name,
+        origin: CoffeeToRestock.origin,
+        price: CoffeeToRestock.price,
+        roast: CoffeeToRestock.roast,
+        inventory: CoffeeToRestock.inventory += 20,
+        id: CoffeeToRestock.id,
+        key: CoffeeToRestock.id,
+      }
+      this.setState({selectedCoffee: changedCoffee})
+    }
+  }
+
+  handleBuyClick = () => {
+    if(this.state.selectedCoffee.inventory !== 0) {
+      const CoffeeToRestock = this.state.selectedCoffee;
+      const changedCoffee = {
+        name: CoffeeToRestock.name,
+        origin: CoffeeToRestock.origin,
+        price: CoffeeToRestock.price,
+        roast: CoffeeToRestock.roast,
+        inventory: CoffeeToRestock.inventory -= 1,
+        id: CoffeeToRestock.id,
+        key: CoffeeToRestock.id,
+      }
+      this.setState({selectedCoffee: changedCoffee})
+    }
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null; 
@@ -82,7 +114,7 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <CoffeeList onCoffeeSelection={this.handleChangingSelectedCoffee} coffeeList={this.state.mainCoffeeList} />;
       buttonText = "Add Coffee"; 
     }
-    
+
   handleRestockClick = () => {
     if(this.state.selectedCoffee.inventory < 500) {
       const CoffeeToRestock = this.state.selectedCoffee;
