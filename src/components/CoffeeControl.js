@@ -12,7 +12,8 @@ class CoffeeControl extends React.Component {
       formVisibleOnPage: false,
       mainCoffeeList: [],
       selectedCoffee: null,
-      editing: false
+      editing: false,
+      stockChange: 0
     };
   }
   
@@ -53,7 +54,8 @@ class CoffeeControl extends React.Component {
     this.setState({
       mainCoffeeList: editedMainCoffeeList,
       editing: false,
-      selectedCoffee: null
+      selectedCoffee: null,
+      stockChange: 0,
     });
   }
 
@@ -67,34 +69,35 @@ class CoffeeControl extends React.Component {
 
   handleRestockClick = () => {
     if(this.state.selectedCoffee.inventory < 500) {
-      const CoffeeToRestock = this.state.selectedCoffee;
-      const changedCoffee = {
-        name: CoffeeToRestock.name,
-        origin: CoffeeToRestock.origin,
-        price: CoffeeToRestock.price,
-        roast: CoffeeToRestock.roast,
-        inventory: CoffeeToRestock.inventory += 20,
-        id: CoffeeToRestock.id,
-        key: CoffeeToRestock.id,
-      }
-      this.setState({selectedCoffee: changedCoffee})
+       let stockChange = 20;
+       console.log(this.state.stockChange);
+       this.handleStockChange(stockChange);
     }
   }
 
+
   handleBuyClick = () => {
     if(this.state.selectedCoffee.inventory !== 0) {
-      const CoffeeToRestock = this.state.selectedCoffee;
-      const changedCoffee = {
-        name: CoffeeToRestock.name,
-        origin: CoffeeToRestock.origin,
-        price: CoffeeToRestock.price,
-        roast: CoffeeToRestock.roast,
-        inventory: CoffeeToRestock.inventory -= 1,
-        id: CoffeeToRestock.id,
-        key: CoffeeToRestock.id,
-      }
-      this.setState({selectedCoffee: changedCoffee})
+        let stockChange = - 1 ;
+       this.handleStockChange(stockChange);
     }
+  }
+
+  handleStockChange = (stockChange) => {
+    const CoffeeToRestock = this.state.selectedCoffee;
+    const changedCoffee = {
+      name: CoffeeToRestock.name,
+      origin: CoffeeToRestock.origin,
+      price: CoffeeToRestock.price,
+      roast: CoffeeToRestock.roast,
+      inventory: CoffeeToRestock.inventory += stockChange,
+      id: CoffeeToRestock.id,
+      key: CoffeeToRestock.id,
+    }
+    this.setState({
+      selectedCoffee: changedCoffee,
+      stockChange: 0
+    });
   }
 
   render(){
