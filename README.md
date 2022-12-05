@@ -28,5 +28,6 @@ _This is a application in React that tracks inventory for a small coffee busines
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* _Restocking coffee only happens once per edit_
+
+* _Buying coffee only happens once per edit_
