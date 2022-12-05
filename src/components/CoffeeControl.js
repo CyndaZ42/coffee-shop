@@ -115,21 +115,6 @@ class CoffeeControl extends React.Component {
       buttonText = "Add Coffee"; 
     }
 
-  handleRestockClick = () => {
-    if(this.state.selectedCoffee.inventory < 500) {
-      const CoffeeToRestock = this.state.selectedCoffee;
-      const changedCoffee = {
-        name: CoffeeToRestock.name,
-        origin: CoffeeToRestock.origin,
-        price: CoffeeToRestock.price,
-        roast: CoffeeToRestock.roast,
-        inventory: CoffeeToRestock.inventory += 20,
-        id: CoffeeToRestock.id,
-        key: CoffeeToRestock.id,
-      }
-      this.setState({selectedCoffee: changedCoffee})
-    }
-  }
     return (
       <React.Fragment>
         {currentlyVisibleState}
