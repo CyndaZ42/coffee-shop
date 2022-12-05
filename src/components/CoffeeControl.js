@@ -98,6 +98,7 @@ class CoffeeControl extends React.Component {
       selectedCoffee: changedCoffee,
       stockChange: 0
     });
+    this.handleClick();
   }
 
   render(){
